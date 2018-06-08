@@ -10,7 +10,8 @@ namespace GBproject.SceneObjects
     public class PlayerController : BaseSceneObject
     {
         private CharacterMovement characterMovement;
-        private Vector3 movement;
+        private Vector3 movement = Vector3.zero;
+
         void Awake()
         {
             characterMovement = GetComponent<CharacterMovement>();
@@ -18,7 +19,9 @@ namespace GBproject.SceneObjects
 
         void Update()
         {
-            movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+            movement.x = Input.GetAxis("Horizontal"); 
+            //movement.y = Input.GetAxis("Vertical");            
+
             characterMovement.Move(movement);
         }
     }
