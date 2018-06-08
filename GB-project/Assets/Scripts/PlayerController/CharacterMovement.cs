@@ -1,12 +1,19 @@
 ﻿using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+namespace GBproject
 {
-    [SerializeField]
-    protected float moveSpeed = 1f;
-	
-    public void Move(Vector3 movement)
+    public class CharacterMovement : MonoBehaviour
     {
-        transform.position += movement * Time.deltaTime * moveSpeed;
+        [SerializeField]
+        protected float _moveSpeed = 1f;
+
+        /// <summary>
+        /// Перемещение персонажа в указанном направлении
+        /// </summary>
+        /// <param name="movement">вектор направления</param>
+        public void Move(Vector3 movement)
+        {
+            transform.position += movement * Time.deltaTime * _moveSpeed;
+        }
     }
 }

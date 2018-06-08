@@ -9,20 +9,20 @@ namespace GBproject.SceneObjects
     [RequireComponent(typeof(CharacterMovement))]
     public class PlayerController : BaseSceneObject
     {
-        private CharacterMovement characterMovement;
-        private Vector3 movement = Vector3.zero;
+        private CharacterMovement _characterMovement;
+        private Vector3 _movement = Vector3.zero;
 
         void Awake()
         {
-            characterMovement = GetComponent<CharacterMovement>();
+            _characterMovement = GetComponent<CharacterMovement>();
         }
 
         void Update()
         {
-            movement.x = Input.GetAxis("Horizontal"); 
+            _movement.x = Input.GetAxis("Horizontal"); 
             //movement.y = Input.GetAxis("Vertical");            
 
-            characterMovement.Move(movement);
+            _characterMovement.Move(_movement);
         }
     }
 }
