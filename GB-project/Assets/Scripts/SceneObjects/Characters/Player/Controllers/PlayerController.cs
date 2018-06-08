@@ -1,11 +1,13 @@
-﻿/* 
- Пока выполняет только роль PlayerInputController 
- т.е. получает ввод и двигает за счет этого персонажа
- */
-using UnityEngine;
+﻿using UnityEngine;
+
 
 namespace GBproject.SceneObjects
 {
+
+    /// <summary>
+    /// Пока выполняет только роль PlayerInputController 
+    /// т.е.получает ввод и двигает за счет этого персонажа
+    /// </summary>
     [RequireComponent(typeof(CharacterMovement))]
     public class PlayerController : BaseSceneObject
     {

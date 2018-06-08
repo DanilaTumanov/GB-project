@@ -2,6 +2,10 @@
 
 namespace GBproject
 {
+
+    /// <summary>
+    /// Класс, определяющий передвижение персонажей по сцене
+    /// </summary>
     public class CharacterMovement : MonoBehaviour
     {
         [SerializeField]
