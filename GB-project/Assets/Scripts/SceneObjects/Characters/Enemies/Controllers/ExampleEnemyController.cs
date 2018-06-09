@@ -13,6 +13,5 @@ namespace GBproject.SceneObjects
             _stateMachine.AddState("Idle", _aiPatternsObject.Idle);
             _stateMachine.AddState("Triggered", _aiPatternsObject.Triggered);
         }
-
     }
 }
