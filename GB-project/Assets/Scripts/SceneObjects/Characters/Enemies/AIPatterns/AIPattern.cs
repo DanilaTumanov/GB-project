@@ -28,7 +28,7 @@ namespace GBproject.Controllers.AI
         /// <summary>
         /// Враг ожидает.
         /// </summary>
-        public IEnumerator Idle()
+        public IEnumerator AIStateIdle()
         {
             return null;
         }
@@ -36,15 +36,15 @@ namespace GBproject.Controllers.AI
         /// <summary>
         /// Враг спровоцирован.
         /// </summary>
-        public IEnumerator Triggered()
+        public IEnumerator AIStateTriggered()
         {
             return null;
         }
 
         /// <summary>
-        /// Враг идет убивать базу, игнорируя игрока.
+        /// Враг патрулирует.
         /// </summary>
-        public IEnumerator Patrol()
+        public IEnumerator AIStatePatrol()
         {
             return null;
         }

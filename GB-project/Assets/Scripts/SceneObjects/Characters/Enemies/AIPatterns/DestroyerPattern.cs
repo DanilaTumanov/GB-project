@@ -17,8 +17,8 @@ namespace GBproject.Controllers.AI
         public override AIStateMachine GetSM()
         {
             AIStateMachine stateMachine = new AIStateMachine(_enemy);
-            stateMachine.AddState("Idle", Idle);
-            stateMachine.AddState("Triggered", Triggered);
+            stateMachine.AddState("Idle", AIStateIdle);
+            stateMachine.AddState("Triggered", AIStateTriggered);
             return stateMachine;
         }
     }
