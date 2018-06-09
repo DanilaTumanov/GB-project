@@ -8,17 +8,22 @@ namespace GBproject.Controllers.AI
     /// <summary>
     /// Класс, содержащий паттерны поведения врагов.
     /// </summary>
-    public class AIPattern
+    public abstract class AIPattern
     {
         /// <summary>
         /// Ссылка на управляемый объект.
         /// </summary>
-        private BaseEnemyController _enemy;
+        protected BaseEnemyController _enemy;
 
         public AIPattern(BaseEnemyController enemy)
         {
             _enemy = enemy;
         }
+
+        /// <summary>
+        /// Метод возвращает КА для заданного поведения врага. 
+        /// </summary>
+        public abstract AIStateMachine GetSM();
 
         /// <summary>
         /// Враг ожидает.
@@ -39,15 +44,7 @@ namespace GBproject.Controllers.AI
         /// <summary>
         /// Враг идет убивать базу, игнорируя игрока.
         /// </summary>
-        public IEnumerator Destroyer()
-        {
-            return null;
-        }
-
-        /// <summary>
-        /// Враг ищет игрока, игнорируя все остальное.
-        /// </summary>
-        public IEnumerator Hunter()
+        public IEnumerator Patrol()
         {
             return null;
         }

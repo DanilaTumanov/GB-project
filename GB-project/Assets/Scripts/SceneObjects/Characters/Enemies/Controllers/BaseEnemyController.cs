@@ -20,11 +20,5 @@ namespace GBproject.SceneObjects
         /// КА для управления поведением врага.
         /// </summary>
         protected AIStateMachine _stateMachine;
-
-        private void Awake()
-        {
-            _aiPatternsObject = new AIPattern(this);
-            _stateMachine = new AIStateMachine(this);
-        }
     }
 }

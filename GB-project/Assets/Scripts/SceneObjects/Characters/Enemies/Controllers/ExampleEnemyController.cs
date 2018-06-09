@@ -9,9 +9,8 @@ namespace GBproject.SceneObjects
     {
         private void Awake()
         {
-            //Добавляем возможные методы поведения
-            _stateMachine.AddState("Idle", _aiPatternsObject.Idle);
-            _stateMachine.AddState("Triggered", _aiPatternsObject.Triggered);
+            _aiPatternsObject = new DestroyerPattern(this);
+            _stateMachine = _aiPatternsObject.GetSM();
         }
     }
 }
