@@ -1,20 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GBproject.SceneObjects;
 
-namespace GBproject.SceneObjects
+namespace GBproject.Controllers.AI
 {
     /// <summary>
     /// Класс, содержащий паттерны поведения врагов.
     /// </summary>
-    public class AIPatterns
+    public class AIPattern
     {
         /// <summary>
         /// Ссылка на управляемый объект.
         /// </summary>
         private BaseEnemyController _enemy;
 
-        public AIPatterns(BaseEnemyController enemy)
+        public AIPattern(BaseEnemyController enemy)
         {
             _enemy = enemy;
         }

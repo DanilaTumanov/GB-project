@@ -14,7 +14,7 @@ namespace GBproject.SceneObjects
         /// <summary>
         /// Экземпляр класса паттернов поведения ИИ.
         /// </summary>
-        protected AIPatterns _aiPatternsObject;
+        protected AIPattern _aiPatternsObject;
 
         /// <summary>
         /// КА для управления поведением врага.
@@ -23,7 +23,7 @@ namespace GBproject.SceneObjects
 
         private void Awake()
         {
-            _aiPatternsObject = new AIPatterns(this);
+            _aiPatternsObject = new AIPattern(this);
             _stateMachine = new AIStateMachine(this);
         }
     }
