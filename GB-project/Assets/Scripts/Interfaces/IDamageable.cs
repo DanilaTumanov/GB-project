@@ -1,6 +1,6 @@
 ﻿namespace GBproject.Interfaces
 {
-    public interface IDamagable
+    public interface IDamageable
     {
         void ApplyDamage(IDamageDealer damageDealer);
     }

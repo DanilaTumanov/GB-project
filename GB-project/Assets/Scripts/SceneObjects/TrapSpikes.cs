@@ -17,16 +17,16 @@ namespace GBproject.SceneObjects
 
         protected override void Interact(Collision2D collision)
         {
-            var _damagableObject = collision.collider.gameObject.GetComponent<IDamagable>();
-            if (_damagableObject != null)
+            var _damageableObject = collision.collider.gameObject.GetComponent<IDamageable>();
+            if (_damageableObject != null)
             {
-                DealDamage(_damagableObject);
+                DealDamage(_damageableObject);
             }
         }
 
-        private void DealDamage(IDamagable _damagableObject)
+        private void DealDamage(IDamageable damageableObject)
         {
-            _damagableObject.ApplyDamage(this as IDamageDealer);
+            damageableObject.ApplyDamage(this as IDamageDealer);
         }
     }
 }
