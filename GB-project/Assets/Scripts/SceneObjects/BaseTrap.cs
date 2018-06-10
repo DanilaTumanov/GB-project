@@ -10,10 +10,10 @@ namespace GBproject.SceneObjects
     {
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            var _trapable = collision.collider.gameObject.GetComponent<ITrapable>();
-            if (_trapable != null)
+            var _trapableObject = collision.collider.gameObject.GetComponent<ITrapable>();
+            if (_trapableObject != null)
             {
-                _trapable.Trapped();
+                _trapableObject.Trapped();
                 Interact(collision);
             }
         }
