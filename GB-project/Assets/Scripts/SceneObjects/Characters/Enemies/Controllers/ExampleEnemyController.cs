@@ -10,7 +10,6 @@ namespace GBproject.SceneObjects
         private void Awake()
         {
             _aiPatternsObject = new DestroyerPattern(this);
-            _stateMachine = _aiPatternsObject.GetSM();
         }
     }
 }

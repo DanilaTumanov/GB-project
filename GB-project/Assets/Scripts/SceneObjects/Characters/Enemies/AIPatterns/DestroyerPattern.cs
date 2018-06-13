@@ -8,18 +8,24 @@ namespace GBproject.Controllers.AI
     /// <summary>
     /// Враг идет убивать базу, игнорируя игрока.
     /// </summary>
-    public class DestroyerPattern : AIPattern
+    public class DestroyerPattern : AIPattern, IAIStateIdle, IAIStatePatrol
     {
         public DestroyerPattern(BaseEnemyController enemy) : base(enemy)
         {
+            _stateMachine = new AIStateMachine(_enemy);
+            //TODO: реализовать рефлексию типов
+            _stateMachine.AddState("Idle", AIStateIdle);
+            _stateMachine.AddState("Triggered", AIStatePatrol);
         }
 
-        public override AIStateMachine GetSM()
+        public IEnumerator AIStateIdle()
         {
-            AIStateMachine stateMachine = new AIStateMachine(_enemy);
-            stateMachine.AddState("Idle", AIStateIdle);
-            stateMachine.AddState("Triggered", AIStateTriggered);
-            return stateMachine;
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerator AIStatePatrol()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -15,10 +15,5 @@ namespace GBproject.SceneObjects
         /// Экземпляр класса паттернов поведения ИИ.
         /// </summary>
         protected AIPattern _aiPatternsObject;
-
-        /// <summary>
-        /// КА для управления поведением врага.
-        /// </summary>
-        protected AIStateMachine _stateMachine;
     }
 }
