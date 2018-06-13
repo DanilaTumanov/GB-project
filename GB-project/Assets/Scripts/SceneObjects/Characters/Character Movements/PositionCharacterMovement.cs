@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace GBproject
 {    
@@ -30,6 +31,11 @@ namespace GBproject
             _rb2D.MovePosition(_targetPos);
 
             _nextMove = Vector2.zero;
-        }      
+        }
+
+        public override bool HasGroundCollisions()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

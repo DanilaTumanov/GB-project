@@ -2,7 +2,7 @@
 
 namespace GBproject
 {
-    [RequireComponent(typeof(Rigidbody2D))]    
+    [RequireComponent(typeof(Rigidbody2D))]
     /// <summary>
     /// Базовый класс передвижения персонажей
     /// </summary>
@@ -14,7 +14,7 @@ namespace GBproject
         [Tooltip("Скорость перемещения персонажа. Умножает введенный вектор перемещения")]
         [SerializeField]
         protected float _maxSpeed = 1f;
-        
+
         protected virtual void Awake()
         {
             _rb2D = GetComponent<Rigidbody2D>();
@@ -25,5 +25,10 @@ namespace GBproject
         /// </summary>
         /// <param name="movement">направление и величина перемещения</param>
         public abstract void Move(Vector2 moveVector);
+
+        /// <summary>
+        /// Проверка, есть ли "почва под ногами". Обычно вызывается при прыжке.
+        /// </summary>
+        public abstract bool HasGroundCollisions();
     }
 }
