@@ -29,6 +29,7 @@ namespace GBproject
         private Collider2D _collider;
         private bool _isOnStairs;
         private int _facingDir = 1; /// 1 - смотрит вправо, -1 - влево
+        private float _startGravityScale;
         Vector2[] _raycastPositions = new Vector2[3];
 
         #region Встроенные Unity-методы
@@ -36,6 +37,7 @@ namespace GBproject
         {
             base.Awake();
             _collider = GetComponent<Collider2D>();
+            _startGravityScale = _rb2D.gravityScale;
         }
 
         /// Проверяем находится ли коллайдер в одном из слоев, указанных в маске слоев для лестниц
@@ -65,7 +67,7 @@ namespace GBproject
             }
             else
             {
-                _rb2D.gravityScale = 4;
+                _rb2D.gravityScale = _startGravityScale;
 
                 _newVelocity.Set(moveVector.x * _maxSpeed, _rb2D.velocity.y);                
             } 
