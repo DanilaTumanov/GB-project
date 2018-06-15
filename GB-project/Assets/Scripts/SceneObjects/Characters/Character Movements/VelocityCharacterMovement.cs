@@ -8,6 +8,9 @@ namespace GBproject
     /// </summary>
     public class VelocityCharacterMovement : BaseCharacterMovement
     {
+        [Tooltip("Скорость перемещения на лестнице уменьшается в указанное число раз отностительно базовой максимальной скорости.")]
+        [SerializeField]
+        private float _stairsDeceleration = 3f;
         [Tooltip("Слои объектов, позволяющих персонажу перемещаться вертикально: лестницы, канаты.")]        
         [SerializeField]
         private LayerMask _stairsLayerMask;
@@ -24,38 +27,60 @@ namespace GBproject
 
         private RaycastHit2D _raycastHit;
         private Collider2D _collider;
-
+        private bool _isOnStairs;
+        private int _facingDir = 1; /// 1 - смотрит вправо, -1 - влево
         Vector2[] _raycastPositions = new Vector2[3];
 
-        protected virtual void Awake()
+        #region Встроенные Unity-методы
+        protected override void Awake()
         {
             base.Awake();
             _collider = GetComponent<Collider2D>();
         }
+
+        /// Проверяем находится ли коллайдер в одном из слоев, указанных в маске слоев для лестниц
+        void OnTriggerStay2D(Collider2D other)
+        {
+            _isOnStairs = _stairsLayerMask == (_stairsLayerMask | (1 << other.gameObject.layer));
+        }
+
+        void OnTriggerExit2D(Collider2D other)
+        {
+            _isOnStairs = false;
+        }
+        #endregion
+
         /// <summary>
         /// Перемещение персонажа в указанном направлении за счет задания вектора скорости.
         /// </summary>
         /// <param name="movement">направление перемещения и процент от максимальной скорости в нужном направлении</param>
         public override void Move(Vector2 moveVector)
-        {
-            /// Установка горизонтального перемещения
-            _newVelocity.x = moveVector.x * _maxSpeed;
-
-            /// Установка вертикального перемещения (для этого проверяем не на лестнице ли мы.)
-            _raycastHit = Physics2D.Raycast(transform.position, Vector2.up * moveVector.y, _stairsRaycastDistance, _stairsLayerMask);
-            if (_raycastHit.collider)
+        {            
+            if (_isOnStairs)
             {
-                _newVelocity.y = moveVector.y * _maxSpeed;
                 _rb2D.gravityScale = 0;
+
+                if (moveVector.y != 0)   _newVelocity.Set(0 , moveVector.y * _maxSpeed / _stairsDeceleration);                
+                else                     _newVelocity.Set(moveVector.x * _maxSpeed / _stairsDeceleration, 0);
             }
             else
-            {                               
-                _newVelocity.y = _rb2D.velocity.y;
-                _rb2D.gravityScale = 1;
-            }
+            {
+                _rb2D.gravityScale = 4;
 
-            /// Установка суммарного вектора скорости
-            _rb2D.velocity =_newVelocity;
+                _newVelocity.Set(moveVector.x * _maxSpeed, _rb2D.velocity.y);                
+            } 
+                                             
+            /// Установка финального вектора скорости
+            _rb2D.velocity = _newVelocity;
+
+            /// Установка финального вектора скорости
+            if (_newVelocity.x * _facingDir < 0)    Flip();
+        }
+        
+        private void Flip()
+        {
+            _facingDir *= -1;
+            transform.Rotate(Vector3.up, 180);
         }
 
         /// <summary>

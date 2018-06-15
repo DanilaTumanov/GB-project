@@ -20,11 +20,13 @@ namespace GBproject.SceneObjects
             _characterMovement = GetComponent<BaseCharacterMovement>();
             _characterJump = GetComponent<BaseCharacterJump>();
         }
+
         void Update()
         {
             _moveInput.Set(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             _jumpInput = Input.GetAxis("Jump");
         }
+
         void FixedUpdate()
         {
             _characterMovement.Move(_moveInput);

@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 10
+  _stairsDeceleration: 2
   _stairsLayerMask:
     serializedVersion: 2
     m_Bits: 2048
@@ -111,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d707fe5dc8f8ed489959774225aec0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 2
+  _jumpForce: 10
 --- !u!114 &114539647151241640
 MonoBehaviour:
   m_ObjectHideFlags: 1
