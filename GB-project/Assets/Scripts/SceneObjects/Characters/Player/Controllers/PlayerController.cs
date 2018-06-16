@@ -1,31 +1,39 @@
 ﻿using UnityEngine;
 
-
 namespace GBproject.SceneObjects
 {
-
     /// <summary>
     /// Пока выполняет только роль PlayerInputController 
     /// т.е.получает ввод и двигает за счет этого персонажа
     /// </summary>
-    [RequireComponent(typeof(CharacterMovement))]
+    [RequireComponent(typeof(BaseCharacterMovement))]    
+    [DisallowMultipleComponent]
     public class PlayerController : BaseSceneObject
     {
-        private CharacterMovement _characterMovement;
-        private Vector3 _movement = Vector3.zero;
+        private BaseCharacterMovement _characterMovement;
+        private BaseCharacterJump _characterJump;
+        private Vector2 _moveInput = Vector2.zero;
+        private float _jumpInput = 0.0f;
 
         void Awake()
         {
-            _characterMovement = GetComponent<CharacterMovement>();
+            _characterMovement = GetComponent<BaseCharacterMovement>();
+            _characterJump = GetComponent<BaseCharacterJump>();
         }
 
         void Update()
         {
-            _movement.x = Input.GetAxis("Horizontal"); 
-            //movement.y = Input.GetAxis("Vertical");            
-
-            _characterMovement.Move(_movement);
+            _moveInput.Set(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            _jumpInput = Input.GetAxis("Jump");
         }
-    }
+
+        void FixedUpdate()
+        {
+            _characterMovement.Move(_moveInput);
+
+            if(_jumpInput > 0)
+                _characterJump.Jump(_jumpInput);
+        }
+    } 
 }
 
