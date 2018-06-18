@@ -61,22 +61,23 @@ namespace GBproject
             if (_isOnStairs)
             {
                 _rb2D.gravityScale = 0;
-
-                if (moveVector.y != 0)   _newVelocity.Set(0 , moveVector.y * _maxSpeed / _stairsDeceleration);                
-                else                     _newVelocity.Set(moveVector.x * _maxSpeed / _stairsDeceleration, 0);
+                                
+                if      (moveVector.y != 0)        _newVelocity.Set(  0  ,  moveVector.y * _maxSpeed / _stairsDeceleration );                
+                else if (!HasGroundCollisions())   _newVelocity.Set(  moveVector.x * _maxSpeed / _stairsDeceleration  , 0 );                
+                else                               _newVelocity.Set(  moveVector.x * _maxSpeed  , 0);
             }
             else
             {
                 _rb2D.gravityScale = _startGravityScale;
 
-                _newVelocity.Set(moveVector.x * _maxSpeed, _rb2D.velocity.y);                
+                _newVelocity.Set(moveVector.x * _maxSpeed, Mathf.Clamp(_rb2D.velocity.y, -_maxSpeed, _maxSpeed));                
             } 
                                              
             /// Установка финального вектора скорости
             _rb2D.velocity = _newVelocity;
 
             /// Установка финального вектора скорости
-            if (_newVelocity.x * _facingDir < 0)    Flip();
+            if (moveVector.x * _facingDir < 0)    Flip();
         }
         
         private void Flip()
