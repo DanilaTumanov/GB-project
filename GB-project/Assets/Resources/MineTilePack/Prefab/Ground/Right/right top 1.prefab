@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - component: {fileID: 426422}
   - component: {fileID: 21269564}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: right top 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22,8 +22,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148366}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.36006102, y: -0.18591659, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 248.1, y: 121.50001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,8 +61,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1995149343
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 760c8dcb6884f0d4385558ac68447da9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

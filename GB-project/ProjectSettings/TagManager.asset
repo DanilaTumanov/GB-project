@@ -13,13 +13,13 @@ TagManager:
   - UI
   - 
   - 
-  - Foreground
-  - Background
+  - Player
+  - Enemies
   - Ground
   - Traps
   - Objects
-  - Player
-  - Enemies
+  - Stairs
+  - 
   - 
   - 
   - 
@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1114908609
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Environment
+    uniqueID: 2299817953
+    locked: 0
+  - name: Characters
+    uniqueID: 1824411667
+    locked: 0
+  - name: Foreground
+    uniqueID: 32489735
     locked: 0
