@@ -15,7 +15,7 @@ namespace GBproject.Controllers.AI
             _stateMachine = new AIStateMachine(_enemy);
             //TODO: реализовать рефлексию типов
             _stateMachine.AddState("Idle", AIStateIdle);
-            _stateMachine.AddState("Triggered", AIStatePatrol);
+            _stateMachine.AddState("Patrol", AIStatePatrol);
         }
 
         public IEnumerator AIStateIdle()
